@@ -14,18 +14,21 @@ public class TicketServiceImpl implements TicketService {
 	@Autowired
     TicketRepository ticketRepo;
 	
+	//method that returns ticket based on ID
 	@Override
 	public Ticket showTicket(int ticketId)  {
 		
 		return ticketRepo.getOne(ticketId);
      }
 	
+	//method that adds a ticket
 	@Override
 	public Ticket addTicket(Ticket ticket) throws SlotNotAvailableException {
 		
           return ticketRepo.save(ticket);
         }
 
+	//method to delete a particular ticket by ID 
 	@Override
 	public boolean cancelBooking(int ticketId) throws TicketCancellationException {
 
@@ -39,6 +42,7 @@ public class TicketServiceImpl implements TicketService {
 		return true;
 	}
 
+	//method to get all the bookings
     @Override
      public List<Ticket> getAllBookings(Ticket ticket) {
 	

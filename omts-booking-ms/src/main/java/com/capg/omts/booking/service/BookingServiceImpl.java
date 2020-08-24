@@ -19,6 +19,7 @@ public class BookingServiceImpl implements BookingService {
 	@Autowired
 	RestTemplate rt;
 
+	//using rest template and getting info from seat-ms
 	@Override
 	public List<Seat> chooseSeats(List<Integer> seatIds) {
 		
@@ -27,11 +28,13 @@ public class BookingServiceImpl implements BookingService {
 		return Arrays.asList(blockedSeats);
 	}
 
+	//method for calculating total cost
 	@Override
 	public double calculateTotalCost(List<Seat> seats) {
 		return seats.stream().mapToDouble(s->s.getSeatPrice()).sum();
 	}
 
+	//method returning the payment method
 	@Override
 	public Payment choosePaymentMethod(Payment payment) {
 		

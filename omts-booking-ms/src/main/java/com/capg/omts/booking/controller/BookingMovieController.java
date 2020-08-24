@@ -21,19 +21,20 @@ import com.capg.omts.booking.service.*;
 public class BookingMovieController {
 	@Autowired
 	BookingServiceImpl service;
-		
+	
+	//calculating total cost
 	@GetMapping("/seats")	
 	public ResponseEntity<List<Seat>> calculateTotalCost(@RequestBody List<Seat> seats){
 		service.calculateTotalCost(seats);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+	//some put calls to choose the seats
 	@PutMapping("/choose/seats")	
 	public ResponseEntity<List<Seat>> chooseSeats(@RequestBody List<Integer> seatIds){
 	
 		return new ResponseEntity<>(service.chooseSeats(seatIds),HttpStatus.OK);
 	}
-	
+	//choosing the payment method
 	@PostMapping("/payment")
 	public ResponseEntity<Payment> choosePaymentMethod(Payment payment) {
 		return new ResponseEntity<>(service.choosePaymentMethod(payment),HttpStatus.OK);

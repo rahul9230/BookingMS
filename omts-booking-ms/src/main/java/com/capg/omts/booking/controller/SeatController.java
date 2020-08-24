@@ -22,12 +22,14 @@ public class SeatController {
 	@Autowired
 	SeatServiceImpl seatService;
 	
+	//some post method for adding seats
 	@PostMapping("/add/seat")
 	public ResponseEntity<Seat> addSeat(@Valid @RequestBody Seat seat) {
 		seatService.addSeat(seat);
 		return new ResponseEntity<>(seat, HttpStatus.CREATED);	
 	}
 
+	//some get methods for getting the available seats
 	@GetMapping("/all/seats")
 	public ResponseEntity<List<Seat>> getAvailableSeats(){
 		List<Seat> seats = seatService.getAvailableSeats();

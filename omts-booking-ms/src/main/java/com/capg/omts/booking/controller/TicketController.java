@@ -26,22 +26,26 @@ public class TicketController {
 	@Autowired
 	TicketServiceImpl ticketservice;
 	
+	//some post methods for adding tickets
 	@PostMapping("/add/all")
 	public ResponseEntity<Ticket> addTicket(@RequestBody Ticket ticket) throws SlotNotAvailableException{
 			return new ResponseEntity<Ticket>(ticketservice.addTicket(ticket), HttpStatus.CREATED);
 	}
 	
+	//get method for getting ticket based on ID
 	@GetMapping("/id/{ticketId}")	
 	public ResponseEntity<Ticket> showTicket(@PathVariable int ticketId){
 		ticketservice.showTicket(ticketId);
 		return new ResponseEntity<Ticket>(ticketservice.showTicket(ticketId),HttpStatus.OK);
 	}	
 	
+	//get method for getting all the tickets
 	@GetMapping("/all")
 	public ResponseEntity<List<Ticket>> getAllBookings(@RequestBody Ticket ticket){
 		return new ResponseEntity<List<Ticket>>(ticketservice.getAllBookings(ticket),HttpStatus.OK);
 	}
 
+	//delete method for deleting a particular ticket
 	@DeleteMapping("/{ticketId}")
 	public ResponseEntity<Ticket> cancelBooking(@PathVariable int ticketId) throws TicketCancellationException {
 		ResponseEntity<Ticket> rt = null;

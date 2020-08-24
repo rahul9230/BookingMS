@@ -16,12 +16,14 @@ public class SeatServiceImpl implements SeatService {
 	@Autowired
 	RestTemplate rt;
 	
+	//rest template for getting info from seat-ms
 	@Override
 	public Seat addSeat(Seat seat) {
 		
 		return rt.postForObject("http://seat-ms/seat/add", seat, Seat.class);
 	}
 	
+	//method for getting available seats
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Seat> getAvailableSeats() {
