@@ -2,6 +2,7 @@ package com.capg.omts.booking.model;
 
 import java.time.LocalDateTime;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -11,6 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 @Table(name="movieticket_booking")
 public class Ticket {
 	@Id
+	@GeneratedValue
 	private int ticketId;
 	private int noOfSeats;
     private String movieName;
@@ -86,9 +88,9 @@ public String getPaymentMethod() {
 public void setPaymentMethod(String paymentMethod) {
 	this.paymentMethod = paymentMethod;
 }
-public LocalDateTime getDateTime() {
-	return dateTime;
-}
+//public LocalDateTime getDateTime() {
+	//return dateTime;
+//}
 public void setDateTime(LocalDateTime dateTime) {
 	this.dateTime = dateTime;
 }
